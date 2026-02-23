@@ -214,6 +214,7 @@ function Sidebar() {
           <span className="font-medium">Log out</span>
         </Link>
       </div>
+      </div>
     </>
   )
 }
