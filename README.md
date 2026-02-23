@@ -1,15 +1,16 @@
-# MediCare - Doctor Appointment Booking System
+# Jensei - Doctor Appointment Management System
 
-A modern, responsive healthcare appointment booking platform built with React and Tailwind CSS.
+A modern, professional healthcare appointment management platform built with React and Tailwind CSS for Jensei.
 
 ## Features
 
-- 🏥 Doctor Profile Management
-- 📅 Appointment Scheduling
-- 📊 Analytics Dashboard
-- 👤 User Authentication
-- 📱 Responsive Design
-- 🎨 Modern UI with Tailwind CSS
+- 🏥 Doctor Dashboard with Analytics
+- 📅 Appointment Management
+- 📊 Revenue & Analytics Charts
+- 👤 Doctor Profile Management
+- 🗓️ Schedule Management
+- ✏️ Profile Editing
+- 🔐 Secure Login & Signup
 
 ## Tech Stack
 
@@ -56,25 +57,7 @@ The build files will be generated in the `dist` folder.
 
 ## Deployment to Netlify
 
-### Method 1: Using Netlify CLI
-
-1. Install Netlify CLI:
-```bash
-npm install -g netlify-cli
-```
-
-2. Login to Netlify:
-```bash
-netlify login
-```
-
-3. Deploy:
-```bash
-npm run build
-netlify deploy --prod --dir=dist
-```
-
-### Method 2: Using Netlify Dashboard
+### Method 1: Using Netlify Dashboard
 
 1. Push your code to GitHub
 2. Go to [Netlify](https://app.netlify.com)
@@ -85,6 +68,22 @@ netlify deploy --prod --dir=dist
    - **Publish directory**: `dist`
 6. Click "Deploy site"
 
+### Method 2: Using Netlify CLI
+
+```bash
+# Install Netlify CLI globally
+npm install -g netlify-cli
+
+# Login to Netlify
+netlify login
+
+# Build your project
+npm run build
+
+# Deploy to production
+netlify deploy --prod --dir=dist
+```
+
 ## Project Structure
 
 ```
@@ -92,7 +91,7 @@ Doctor-space/
 ├── public/
 │   └── assets/
 │       ├── logo.png
-│       └── doctor (Neha).png
+│       └── doctor-neha.png
 ├── src/
 │   ├── components/
 │   │   ├── Sidebar.jsx
@@ -102,15 +101,12 @@ Doctor-space/
 │   │   ├── StatCard.jsx
 │   │   └── AppointmentCard.jsx
 │   ├── pages/
-│   │   ├── Home.jsx
 │   │   ├── Login.jsx
 │   │   ├── Signup.jsx
 │   │   ├── Dashboard.jsx
 │   │   ├── Appointments.jsx
 │   │   ├── Schedule.jsx
 │   │   ├── DoctorProfile.jsx
-│   │   ├── Doctors.jsx
-│   │   ├── Booking.jsx
 │   │   └── EditProfile.jsx
 │   ├── App.jsx
 │   ├── main.jsx
@@ -123,24 +119,44 @@ Doctor-space/
 
 ## Available Routes
 
-- `/` - Home page
+- `/` - Dashboard (default)
 - `/login` - Login page
 - `/signup` - Signup page
 - `/dashboard` - Doctor dashboard
 - `/appointments` - Appointments list
 - `/schedule` - Schedule management
-- `/doctors` - Find doctors
 - `/doctor-profile` - Doctor profile view
-- `/booking` - Book appointment
 - `/edit-profile` - Edit profile
 
-## Environment Variables
+## Features Overview
 
-Create a `.env` file in the root directory if needed:
+### Dashboard
+- Welcome message with patient count
+- Today's appointments list with status indicators
+- Revenue tracking (weekly & monthly)
+- Analytics charts with appointment trends
+- Doctor profile card with ratings
+- Real-time alerts for cancellations and new appointments
 
-```env
-VITE_API_URL=your_api_url_here
-```
+### Doctor Profile
+- Complete doctor information
+- Education and registrations
+- Specializations and treatments
+- Patient reviews and ratings
+- Appointment booking calendar
+- Location and photos
+
+### Appointments
+- List of all appointments
+- Filter by status (pending, confirmed, cancelled)
+- Patient contact information
+- Quick actions for each appointment
+
+### Schedule
+- Calendar view
+- Time slot management
+- Day/time configuration
+- Availability settings
 
 ## Contributing
 
