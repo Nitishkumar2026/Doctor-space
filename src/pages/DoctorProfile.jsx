@@ -378,7 +378,7 @@ function DoctorProfile() {
                     <span className="text-sm text-gray-400 cursor-pointer">Night</span>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {['5:00 PM', '5:15 PM', '6:30 PM', '7:45 PM', '5:00 PM', '5:30 PM', '6:00 PM', '8:00 PM'].map((time, idx) => (
                       <button
                         key={idx}

@@ -20,7 +20,7 @@ function EditProfile() {
 
       <div className="flex-1 overflow-auto">
         {/* Sticky Header with Actions */}
-        <div className="px-8 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-20">
+        <div className="px-4 sm:px-8 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-20">
           <div className="flex items-center gap-2 text-sm font-bold text-gray-400">
             <HomeIcon className="w-4 h-4" />
             <ChevronRightIcon className="w-3 h-3" />
@@ -40,12 +40,12 @@ function EditProfile() {
           </div>
         </div>
 
-        <div className="p-8 max-w-[1200px] mx-auto pb-24">
+        <div className="p-4 sm:p-8 max-w-[1200px] mx-auto pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left Column - Navigation/Summary */}
             <div className="space-y-6">
               {/* Profile Progress */}
-              <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+              <div className="bg-white rounded-[32px] p-5 sm:p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-black text-[#011438]">Completion</h3>
                   <span className="text-2xl font-black text-[#1E69FF]">80%</span>

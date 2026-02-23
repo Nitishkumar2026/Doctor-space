@@ -30,24 +30,24 @@ function Dashboard() {
 
       <div className="flex-1 overflow-auto">
         {/* Header */}
-        <div className="px-8 py-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-[#010101]">Dashboard</h1>
-          <div className="text-sm font-bold text-gray-400">Monday, 20 January, 2026</div>
+        <div className="px-4 sm:px-8 py-4 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#010101]">Dashboard</h1>
+          <div className="text-xs sm:text-sm font-bold text-gray-400">Monday, 20 January, 2026</div>
         </div>
 
         {/* Main Content */}
-        <div className="px-8 pb-8 flex flex-col lg:flex-row gap-8">
-          <div className="flex-1 space-y-8">
+        <div className="px-4 sm:px-8 pb-8 flex flex-col lg:flex-row gap-6 sm:gap-8">
+          <div className="flex-1 space-y-6 sm:space-y-8">
             {/* Welcome Section */}
-            <div>
-              <p className="text-base font-medium text-gray-500 mb-1">Welcome Nehar</p>
-              <h2 className="text-4xl font-black text-[#010101]">
+            <div className="px-1 sm:px-0">
+              <p className="text-sm sm:text-base font-medium text-gray-500 mb-1">Welcome Neha</p>
+              <h2 className="text-2xl sm:text-4xl font-black text-[#010101] leading-tight">
                 <span className="text-[#1E69FF]">7 Patients</span> remaining today
               </h2>
             </div>
 
             {/* Today's Appointment */}
-            <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+            <div className="bg-white rounded-[32px] p-5 sm:p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
               <div className="flex items-center justify-between mb-8">
                 <h3 className="text-xl font-bold text-[#011438]">Today's Appointment</h3>
                 <button className="text-sm font-bold text-gray-400 hover:text-dark">See All</button>
@@ -92,18 +92,18 @@ function Dashboard() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+              <div className="bg-white rounded-[32px] p-5 sm:p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xl font-bold text-[#011438]">Analytics</h3>
                   <div className="flex items-center gap-1 cursor-pointer">
-                    <span className="text-sm font-bold text-gray-400">This week</span>
+                    <span className="text-xs sm:text-sm font-bold text-gray-400">This week</span>
                     <ChevronDownIcon className="w-4 h-4 text-gray-400" />
                   </div>
                 </div>
-                <p className="text-[11px] font-bold text-gray-400 mb-6 uppercase tracking-wider">5% increased by last week</p>
+                <p className="text-[10px] sm:text-[11px] font-bold text-gray-400 mb-6 uppercase tracking-wider">5% increased by last week</p>
 
                 {/* Bar Chart */}
-                <div className="flex items-end justify-between h-32 gap-3 mb-6 px-1">
+                <div className="flex items-end justify-between h-32 gap-1 sm:gap-3 mb-6 px-1">
                   {[
                     { h: '60%', d: 'S', color: 'bg-[#1E69FF]' },
                     { h: '75%', d: 'S', color: 'bg-[#1E69FF]' },
@@ -115,7 +115,7 @@ function Dashboard() {
                   ].map((bar, i) => (
                     <div key={i} className="flex-1 flex flex-col items-center gap-3">
                       <div className={`w-full ${bar.color} rounded-lg transition-all hover:opacity-80`} style={{ height: bar.h }}></div>
-                      <span className="text-[11px] text-gray-400 font-bold uppercase">{bar.d}</span>
+                      <span className="text-[10px] sm:text-[11px] text-gray-400 font-bold uppercase">{bar.d}</span>
                     </div>
                   ))}
                 </div>

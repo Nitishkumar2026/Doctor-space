@@ -8,7 +8,7 @@ import {
     BriefcaseIcon,
     ArrowRightIcon,
     CheckBadgeIcon
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/24/outline'
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -25,7 +25,6 @@ function Signup() {
     const handleSignup = (e) => {
         e.preventDefault()
         setIsLoading(true)
-        // Simulate signup
         setTimeout(() => {
             setIsLoading(false)
             setIsSuccess(true)
@@ -33,149 +32,117 @@ function Signup() {
         }, 1500)
     }
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1 }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: { y: 0, opacity: 1 }
-    }
-
     return (
-        <div className="min-h-screen bg-[#F8F9FB] flex overflow-hidden font-sans">
-            {/* Left Animated Side (shared with Login) */}
-            <motion.div
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                className="hidden lg:flex w-1/2 bg-[#010101] relative items-center justify-center p-20"
-            >
-                <div className="absolute inset-0 overflow-hidden">
-                    <motion.div
-                        animate={{
-                            scale: [1, 1.5, 1],
-                            x: [0, 50, 0],
-                        }}
-                        transition={{ duration: 30, repeat: Infinity }}
-                        className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1E69FF]/20 rounded-full blur-[120px]"
-                    />
-                    <motion.div
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            y: [0, -50, 0],
-                        }}
-                        transition={{ duration: 25, repeat: Infinity }}
-                        className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px]"
-                    />
+        <div className="min-h-screen bg-[#F8F9FB] flex font-sans overflow-hidden">
+            {/* Left Decorative Section (Shared aesthetic) */}
+            <div className="hidden lg:flex w-[40%] bg-[#011438] relative overflow-hidden items-center justify-center p-12">
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#1E69FF] rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-[#D4FF00] rounded-full blur-[150px]" />
                 </div>
 
-                <div className="relative z-10 text-white space-y-12 max-w-lg">
+                <div className="relative z-10 max-w-sm space-y-12">
                     <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: 'spring', damping: 12 }}
-                        className="w-20 h-20 bg-[#D4FF00] rounded-[24px] flex items-center justify-center shadow-2xl"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <span className="text-[#010101] text-5xl font-black">J</span>
+                        <div className="flex items-center gap-3 mb-12">
+                            <img src="/assets/logo.png" alt="Logo" className="w-10 h-10 object-contain brightness-0 invert" />
+                            <span className="text-2xl font-black text-white tracking-tight">Jensei</span>
+                        </div>
+                        <h1 className="text-4xl font-black text-white leading-tight mb-6">
+                            Join the <br />
+                            <span className="text-[#1E69FF]">AI Revolution</span>
+                        </h1>
+                        <p className="text-base text-gray-400 font-medium leading-relaxed">
+                            Empower your healthcare practice with cutting-edge AI. Connect with patients and manage your schedule like never before.
+                        </p>
                     </motion.div>
 
-                    <div className="space-y-6">
-                        <h1 className="text-6xl font-black leading-tight tracking-tight">
-                            Start Your <br />
-                            <span className="text-[#1E69FF]">AI Journey</span>
-                        </h1>
-                        <p className="text-xl font-bold text-gray-400 leading-relaxed">
-                            Connect with patients globally, automate your workflow, and focus on what matters most — saving lives.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-4">
                         {[
-                            { label: 'Verified Doctors', count: '10k+' },
-                            { label: 'Patient Reach', count: '1M+' },
+                            { title: 'Verified Profiles', value: '1,200+' },
+                            { title: 'Appointments Daily', value: '5,000+' }
                         ].map((stat, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1 + (i * 0.2) }}
-                                className="bg-white/5 border border-white/10 p-6 rounded-[24px]"
+                                transition={{ delay: 0.5 + (i * 0.2) }}
+                                className="p-5 rounded-[24px] bg-white/5 border border-white/10 backdrop-blur-md"
                             >
-                                <div className="text-2xl font-black text-[#D4FF00]">{stat.count}</div>
-                                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">{stat.label}</div>
+                                <div className="text-xl font-black text-white mb-0.5">{stat.value}</div>
+                                <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{stat.title}</div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
-            {/* Right Signup Side */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white relative overflow-y-auto custom-scrollbar">
+            {/* Right Signup Section */}
+            <div className="flex-1 flex flex-col justify-center items-center p-6 bg-white overflow-y-auto custom-scrollbar">
                 {isSuccess ? (
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="text-center space-y-6"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-center space-y-6 max-w-sm"
                     >
-                        <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                            <CheckBadgeIcon className="w-16 h-16 text-green-500" />
+                        <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-100">
+                            <CheckBadgeIcon className="w-10 h-10 text-green-500" />
                         </div>
-                        <h2 className="text-4xl font-black text-[#011438]">Welcome to Jensei!</h2>
-                        <p className="text-gray-400 font-bold">Your account has been created. <br /> Redirecting to login...</p>
+                        <h2 className="text-3xl font-black text-[#011438] tracking-tight">Registration Successful</h2>
+                        <p className="text-gray-400 font-bold leading-relaxed">Welcome to the future of healthcare. Redirecting you to login...</p>
                     </motion.div>
                 ) : (
                     <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        className="w-full max-w-md space-y-10 py-12"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="w-full max-w-md space-y-8"
                     >
-                        <div className="space-y-4">
-                            <motion.h2 variants={itemVariants} className="text-[40px] font-black text-[#011438] tracking-tight">Create account</motion.h2>
-                            <motion.p variants={itemVariants} className="text-gray-400 font-bold">Join the future of healthcare management.</motion.p>
+                        <div className="text-center lg:text-left space-y-2">
+                            <img src="/assets/logo.png" alt="Logo" className="w-10 h-10 object-contain mx-auto lg:mx-0 lg:hidden mb-4" />
+                            <h2 className="text-3xl font-black text-[#011438] tracking-tight">Create your account</h2>
+                            <p className="text-gray-400 font-bold text-sm">Join a community of top-tier healthcare professionals</p>
                         </div>
 
-                        <form onSubmit={handleSignup} className="space-y-6">
-                            <motion.div variants={itemVariants} className="space-y-2 group">
-                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
-                                <div className="relative">
-                                    <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-[#1E69FF]" />
-                                    <input
-                                        type="text"
-                                        required
-                                        placeholder="Dr. John Doe"
-                                        className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-2xl pl-12 pr-4 font-bold focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
-                                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                    />
+                        <form onSubmit={handleSignup} className="space-y-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="space-y-1.5">
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
+                                    <div className="relative group">
+                                        <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-[#1E69FF]" />
+                                        <input
+                                            type="text"
+                                            required
+                                            placeholder="Dr. John Doe"
+                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-[20px] pl-11 pr-4 font-bold text-sm focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
+                                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                        />
+                                    </div>
                                 </div>
-                            </motion.div>
-
-                            <motion.div variants={itemVariants} className="space-y-2 group">
-                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
-                                <div className="relative">
-                                    <EnvelopeIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-[#1E69FF]" />
-                                    <input
-                                        type="email"
-                                        required
-                                        placeholder="john@hospital.com"
-                                        className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-2xl pl-12 pr-4 font-bold focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    />
+                                <div className="space-y-1.5">
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
+                                    <div className="relative group">
+                                        <EnvelopeIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-[#1E69FF]" />
+                                        <input
+                                            type="email"
+                                            required
+                                            placeholder="doctor@hospital.com"
+                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-[20px] pl-11 pr-4 font-bold text-sm focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        />
+                                    </div>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <motion.div variants={itemVariants} className="space-y-2 group">
-                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Specialty</label>
-                                <div className="relative">
-                                    <BriefcaseIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-[#1E69FF]" />
+                            <div className="space-y-1.5">
+                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Specialty</label>
+                                <div className="relative group">
+                                    <BriefcaseIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-[#1E69FF]" />
                                     <select
                                         required
-                                        className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-2xl pl-12 pr-4 font-bold focus:bg-white focus:border-[#1E69FF] transition-all outline-none appearance-none cursor-pointer"
+                                        className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-[20px] pl-11 pr-4 font-bold text-sm focus:bg-white focus:border-[#1E69FF] transition-all outline-none appearance-none cursor-pointer"
                                         onChange={(e) => setFormData({ ...formData, specialty: e.target.value })}
                                     >
                                         <option value="">Select Specialty</option>
@@ -184,58 +151,66 @@ function Signup() {
                                         <option value="ortho">Orthopedic</option>
                                     </select>
                                 </div>
-                            </motion.div>
+                            </div>
 
-                            <div className="grid grid-cols-2 gap-4">
-                                <motion.div variants={itemVariants} className="space-y-2 group">
-                                    <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Password</label>
-                                    <div className="relative">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className="space-y-1.5">
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Password</label>
+                                    <div className="relative group">
                                         <LockClosedIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-[#1E69FF]" />
                                         <input
                                             type="password"
                                             required
-                                            placeholder="••••"
-                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-2xl pl-10 pr-4 font-bold focus:bg-white focus:border-[#1E69FF] transition-all outline-none text-xs"
+                                            placeholder="••••••••"
+                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-[20px] pl-11 pr-4 font-bold text-sm focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
                                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                         />
                                     </div>
-                                </motion.div>
-                                <motion.div variants={itemVariants} className="space-y-2 group">
-                                    <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Confirm</label>
-                                    <div className="relative">
+                                </div>
+                                <div className="space-y-1.5">
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Confirm</label>
+                                    <div className="relative group">
                                         <LockClosedIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-[#1E69FF]" />
                                         <input
                                             type="password"
                                             required
-                                            placeholder="••••"
-                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-2xl pl-10 pr-4 font-bold focus:bg-white focus:border-[#1E69FF] transition-all outline-none text-xs"
+                                            placeholder="••••••••"
+                                            className="w-full h-14 bg-[#F8F9FB] border-2 border-transparent rounded-[20px] pl-11 pr-4 font-bold text-sm focus:bg-white focus:border-[#1E69FF] transition-all outline-none"
                                             onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                                         />
                                     </div>
-                                </motion.div>
+                                </div>
                             </div>
 
-                            <motion.div variants={itemVariants} className="pt-4">
+                            <div className="pt-4">
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full h-16 bg-[#1E69FF] text-white rounded-[20px] font-black text-lg shadow-xl shadow-[#1E69FF]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-70"
+                                    className="w-full h-16 bg-[#1E69FF] text-white rounded-[24px] font-black text-lg shadow-xl shadow-blue-600/10 hover:bg-[#1557d9] transition-all flex items-center justify-center gap-3 active:scale-[0.98] disabled:opacity-70"
                                 >
-                                    {isLoading ? 'Creating account...' : (
+                                    {isLoading ? (
+                                        <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                                    ) : (
                                         <>
-                                            Create account
-                                            <ArrowRightIcon className="w-5 h-5" />
+                                            Complete Registration
+                                            <ArrowRightIcon className="w-5 h-5" strokeWidth={3} />
                                         </>
                                     )}
                                 </button>
-                            </motion.div>
+                            </div>
                         </form>
 
-                        <motion.p variants={itemVariants} className="text-center font-bold text-gray-400">
-                            Already have an account? <Link to="/login" className="text-[#1E69FF] hover:underline">Log in</Link>
-                        </motion.p>
+                        <div className="text-center">
+                            <p className="font-bold text-gray-400 text-sm">
+                                Already have an account? <Link to="/login" className="text-[#1E69FF] hover:underline">Log in</Link>
+                            </p>
+                        </div>
                     </motion.div>
                 )}
+
+                <div className="absolute bottom-6 text-[9px] font-black text-gray-300 uppercase tracking-[0.2em] text-center w-full">
+                    Jensei Healthcare Systems • Enterprise Security
+                </div>
             </div>
         </div>
     )
