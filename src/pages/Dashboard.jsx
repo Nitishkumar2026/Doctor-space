@@ -194,7 +194,7 @@ function Dashboard() {
               {/* Doctor Profile Card */}
               <div className="bg-white rounded-xl p-6 shadow-card text-center">
                 <img
-                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop"
+                  src="/assets/doctor.png"
                   alt="Dr. Nehar Khanna"
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
