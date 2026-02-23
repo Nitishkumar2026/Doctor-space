@@ -36,7 +36,7 @@ function Dashboard() {
             </Link>
             <div className="flex items-center gap-3">
               <img
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop"
+                src="/assets/doctor.png"
                 alt="Dr. Nehar Khanna"
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
               />
