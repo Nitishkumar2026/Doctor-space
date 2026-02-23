@@ -4,11 +4,37 @@ import { useState } from 'react'
 function Sidebar() {
   const location = useLocation()
   const [isAppointmentsOpen, setIsAppointmentsOpen] = useState(true)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   const isActive = (path) => location.pathname === path
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 h-screen flex flex-col">
+    <>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-lg shadow-lg"
+      >
+        <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div className={`
+        fixed lg:static inset-y-0 left-0 z-40
+        w-64 bg-white border-r border-gray-200 h-screen flex flex-col
+        transform transition-transform duration-300 ease-in-out
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
       {/* Logo */}
       <div className="p-6 pb-4 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
@@ -19,9 +45,12 @@ function Sidebar() {
           />
           <span className="text-lg font-bold text-gray-900">Jensei</span>
         </div>
-        <button className="p-2 hover:bg-gray-100 rounded-lg transition-all">
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-all"
+        >
           <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -185,7 +214,7 @@ function Sidebar() {
           <span className="font-medium">Log out</span>
         </Link>
       </div>
-    </div>
+    </>
   )
 }
 

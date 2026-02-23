@@ -2,21 +2,21 @@ import Sidebar from '../components/Sidebar'
 
 function DoctorProfile() {
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
       <Sidebar />
       
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto lg:ml-0">
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-dark">Doctors Profile</h1>
-            <div className="relative">
+        <div className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <h1 className="text-xl sm:text-2xl font-bold text-dark pl-12 lg:pl-0">Doctors Profile</h1>
+            <div className="relative w-full sm:w-80">
               <input
                 type="text"
                 placeholder="Search"
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-80"
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-full text-sm sm:text-base"
               />
-              <svg className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
@@ -24,19 +24,19 @@ function DoctorProfile() {
         </div>
 
         {/* Content */}
-        <div className="p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="p-4 sm:p-6 lg:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Left Column - Doctor Info */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="lg:col-span-2 space-y-4 sm:space-y-6">
               {/* Doctor Card */}
-              <div className="bg-white rounded-xl shadow-card p-6">
-                <div className="flex gap-6">
+              <div className="bg-white rounded-xl shadow-card p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                   {/* Doctor Image */}
-                  <div className="relative flex-shrink-0">
+                  <div className="relative flex-shrink-0 mx-auto sm:mx-0">
                     <img
                       src="/assets/doctor-neha.png"
                       alt="Dr. Neha Khanna"
-                      className="w-32 h-32 rounded-2xl object-cover"
+                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover"
                     />
                     <div className="absolute top-2 left-2 bg-yellow-400 text-dark text-xs font-bold px-2 py-1 rounded-lg">
                       4.8
@@ -44,7 +44,7 @@ function DoctorProfile() {
                   </div>
 
                   {/* Doctor Details */}
-                  <div className="flex-1">
+                  <div className="flex-1 text-center sm:text-left">
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <div className="flex items-center gap-2 mb-1">
@@ -69,7 +69,7 @@ function DoctorProfile() {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-gray-500 mb-1">$500 fee</p>
+                        <p className="text-sm text-gray-500 mb-1">₹500 fee</p>
                       </div>
                     </div>
 

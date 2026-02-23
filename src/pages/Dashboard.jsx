@@ -18,19 +18,19 @@ function Dashboard() {
   ]
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
       <Sidebar />
       
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto lg:ml-0">
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-dark">Dashboard</h1>
+        <div className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="pl-12 lg:pl-0">
+            <h1 className="text-xl sm:text-2xl font-bold text-dark">Dashboard</h1>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-500">Monday, 20 January, 2026</span>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
+            <span className="text-xs sm:text-sm text-gray-500 hidden md:block">Monday, 20 January, 2026</span>
             <Link to="/edit-profile" className="relative">
-              <button className="px-4 py-2 bg-accent text-dark text-sm font-semibold rounded-lg hover:bg-yellow-400 transition-all">
+              <button className="px-3 sm:px-4 py-2 bg-accent text-dark text-xs sm:text-sm font-semibold rounded-lg hover:bg-yellow-400 transition-all whitespace-nowrap">
                 Profile Edit
               </button>
             </Link>
@@ -38,53 +38,53 @@ function Dashboard() {
               <img
                 src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop"
                 alt="Dr. Nehar Khanna"
-                className="w-12 h-12 rounded-full object-cover"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
               />
             </div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           {/* Welcome Section */}
-          <div className="mb-8">
-            <p className="text-gray-500 mb-1">Welcome Nehar</p>
-            <h2 className="text-3xl font-bold text-dark">
+          <div className="mb-6 sm:mb-8">
+            <p className="text-sm sm:text-base text-gray-500 mb-1">Welcome Nehar</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-dark">
               <span className="text-primary">7 Patients</span> remaining today
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
             {/* Left Column */}
-            <div className="lg:col-span-2 space-y-6">
+            <div className="xl:col-span-2 space-y-4 sm:space-y-6">
               {/* Today's Appointment */}
-              <div className="bg-white rounded-xl p-6 shadow-card">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-bold text-dark">Today's Appointment</h3>
-                  <button className="text-sm text-gray-500 hover:text-dark">See All</button>
+              <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <h3 className="text-base sm:text-lg font-bold text-dark">Today's Appointment</h3>
+                  <button className="text-xs sm:text-sm text-gray-500 hover:text-dark">See All</button>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {appointments.map((apt, idx) => (
-                    <div key={idx} className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-all">
-                      <div className={`w-10 h-10 rounded-full ${apt.color} flex items-center justify-center font-semibold flex-shrink-0`}>
+                    <div key={idx} className="flex items-center gap-3 sm:gap-4 p-2 sm:p-3 hover:bg-gray-50 rounded-lg transition-all">
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${apt.color} flex items-center justify-center font-semibold flex-shrink-0 text-xs sm:text-sm`}>
                         {apt.initials}
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-dark">{apt.name}</h4>
-                        <p className="text-sm text-gray-500">{apt.phone}</p>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-dark text-sm sm:text-base truncate">{apt.name}</h4>
+                        <p className="text-xs sm:text-sm text-gray-500 truncate">{apt.phone}</p>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                         {apt.status === 'pending' && (
-                          <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full"></span>
                         )}
                         {apt.status === 'confirmed' && (
-                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></span>
                         )}
                         {apt.status === 'cancelled' && (
-                          <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full"></span>
                         )}
-                        <span className="text-sm font-medium text-dark">{apt.time}</span>
-                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="text-xs sm:text-sm font-medium text-dark">{apt.time}</span>
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </div>
@@ -94,32 +94,32 @@ function Dashboard() {
               </div>
 
               {/* Revenue & Analytics */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-card">
-                  <h3 className="text-lg font-bold text-dark mb-4">Revenue</h3>
-                  <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
+                  <h3 className="text-base sm:text-lg font-bold text-dark mb-4">Revenue</h3>
+                  <div className="space-y-3 sm:space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">This Week</p>
-                      <p className="text-2xl font-bold text-dark">₹32540</p>
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">This Week</p>
+                      <p className="text-xl sm:text-2xl font-bold text-dark">₹32540</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 mb-1">This Month</p>
-                      <p className="text-2xl font-bold text-dark">₹333240</p>
+                      <p className="text-xs sm:text-sm text-gray-500 mb-1">This Month</p>
+                      <p className="text-xl sm:text-2xl font-bold text-dark">₹333240</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-6 shadow-card">
+                <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-dark">Analytics</h3>
-                    <select className="text-sm text-gray-500 border-none focus:outline-none">
+                    <h3 className="text-base sm:text-lg font-bold text-dark">Analytics</h3>
+                    <select className="text-xs sm:text-sm text-gray-500 border-none focus:outline-none">
                       <option>This week</option>
                     </select>
                   </div>
                   <p className="text-xs text-gray-400 mb-4">5% increased by last week</p>
                   
                   {/* Bar Chart */}
-                  <div className="flex items-end justify-between h-40 gap-2 mb-4">
+                  <div className="flex items-end justify-between h-32 sm:h-40 gap-1 sm:gap-2 mb-4">
                     <div className="flex-1 flex flex-col items-center gap-2">
                       <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '60%'}}></div>
                       <span className="text-xs text-gray-500 font-medium">S</span>
@@ -161,27 +161,27 @@ function Dashboard() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-100">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 pt-4 border-t border-gray-100">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                         </svg>
                       </div>
-                      <div>
-                        <p className="text-xs text-gray-500">Total Patient</p>
-                        <p className="text-lg font-bold text-gray-900">24</p>
+                      <div className="min-w-0">
+                        <p className="text-xs text-gray-500 truncate">Total Patient</p>
+                        <p className="text-base sm:text-lg font-bold text-gray-900">24</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                         </svg>
                       </div>
-                      <div>
-                        <p className="text-xs text-gray-500">New Patient</p>
-                        <p className="text-lg font-bold text-gray-900">5</p>
+                      <div className="min-w-0">
+                        <p className="text-xs text-gray-500 truncate">New Patient</p>
+                        <p className="text-base sm:text-lg font-bold text-gray-900">5</p>
                       </div>
                     </div>
                   </div>
