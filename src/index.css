@@ -8,27 +8,53 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #F9FAFB;
+
+::selection {
+  background-color: #D4FF00;
+  color: #010101;
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primaryDark transition-all duration-200;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F9FB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F8F9FB;
+  color: #010101;
+  overflow-x: hidden;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: -0.025em;
   }
-  
-  .btn-secondary {
-    @apply bg-gray-100 text-gray-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-200 transition-all duration-200;
-  }
-  
-  .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
-  }
-  
-  .card {
-    @apply bg-white rounded-xl shadow-card;
+}
+
+@layer utilities {
+  .shadow-premium {
+    @apply shadow-[0_24px_64px_-16px_rgba(0, 0, 0, 0.04)];
   }
 }

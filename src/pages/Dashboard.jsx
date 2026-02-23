@@ -1,5 +1,12 @@
 import Sidebar from '../components/Sidebar'
 import { Link } from 'react-router-dom'
+import {
+  ChevronDownIcon,
+  UserGroupIcon,
+  UserPlusIcon,
+  CheckBadgeIcon,
+  StarIcon
+} from '@heroicons/react/24/solid'
 
 function Dashboard() {
   const appointments = [
@@ -18,254 +25,208 @@ function Dashboard() {
   ]
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-[#F8F9FB] overflow-hidden">
       <Sidebar />
-      
-      <div className="flex-1 overflow-auto lg:ml-0">
+
+      <div className="flex-1 overflow-auto">
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="pl-12 lg:pl-0">
-            <h1 className="text-xl sm:text-2xl font-bold text-dark">Dashboard</h1>
-          </div>
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
-            <span className="text-xs sm:text-sm text-gray-500 hidden md:block">Monday, 20 January, 2026</span>
-            <Link to="/edit-profile" className="relative">
-              <button className="px-3 sm:px-4 py-2 bg-accent text-dark text-xs sm:text-sm font-semibold rounded-lg hover:bg-yellow-400 transition-all whitespace-nowrap">
-                Profile Edit
-              </button>
-            </Link>
-            <div className="flex items-center gap-3">
-              <img
-                src="/assets/doctor.png"
-                alt="Dr. Nehar Khanna"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
-              />
-            </div>
-          </div>
+        <div className="px-8 py-6 flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-[#010101]">Dashboard</h1>
+          <div className="text-sm font-bold text-gray-400">Monday, 20 January, 2026</div>
         </div>
 
         {/* Main Content */}
-        <div className="p-4 sm:p-6 lg:p-8">
-          {/* Welcome Section */}
-          <div className="mb-6 sm:mb-8">
-            <p className="text-sm sm:text-base text-gray-500 mb-1">Welcome Nehar</p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-dark">
-              <span className="text-primary">7 Patients</span> remaining today
-            </h2>
-          </div>
+        <div className="px-8 pb-8 flex flex-col lg:flex-row gap-8">
+          <div className="flex-1 space-y-8">
+            {/* Welcome Section */}
+            <div>
+              <p className="text-base font-medium text-gray-500 mb-1">Welcome Nehar</p>
+              <h2 className="text-4xl font-black text-[#010101]">
+                <span className="text-[#1E69FF]">7 Patients</span> remaining today
+              </h2>
+            </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
-            {/* Left Column */}
-            <div className="xl:col-span-2 space-y-4 sm:space-y-6">
-              {/* Today's Appointment */}
-              <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
-                <div className="flex items-center justify-between mb-4 sm:mb-6">
-                  <h3 className="text-base sm:text-lg font-bold text-dark">Today's Appointment</h3>
-                  <button className="text-xs sm:text-sm text-gray-500 hover:text-dark">See All</button>
-                </div>
-                <div className="space-y-2 sm:space-y-3">
-                  {appointments.map((apt, idx) => (
-                    <div key={idx} className="flex items-center gap-3 sm:gap-4 p-2 sm:p-3 hover:bg-gray-50 rounded-lg transition-all">
-                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${apt.color} flex items-center justify-center font-semibold flex-shrink-0 text-xs sm:text-sm`}>
-                        {apt.initials}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-dark text-sm sm:text-base truncate">{apt.name}</h4>
-                        <p className="text-xs sm:text-sm text-gray-500 truncate">{apt.phone}</p>
-                      </div>
-                      <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                        {apt.status === 'pending' && (
-                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400 rounded-full"></span>
-                        )}
-                        {apt.status === 'confirmed' && (
-                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></span>
-                        )}
-                        {apt.status === 'cancelled' && (
-                          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full"></span>
-                        )}
-                        <span className="text-xs sm:text-sm font-medium text-dark">{apt.time}</span>
-                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
+            {/* Today's Appointment */}
+            <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xl font-bold text-[#011438]">Today's Appointment</h3>
+                <button className="text-sm font-bold text-gray-400 hover:text-dark">See All</button>
+              </div>
+              <div className="space-y-1">
+                {appointments.map((apt, idx) => (
+                  <div key={idx} className="flex items-center gap-4 py-3 group cursor-pointer hover:bg-gray-50/50 rounded-2xl px-2 transition-all">
+                    <div className={`w-12 h-12 rounded-full ${apt.color} flex items-center justify-center font-bold text-sm tracking-tighter`}>
+                      {apt.initials}
                     </div>
-                  ))}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-[#011438] text-base">{apt.name}</h4>
+                      <p className="text-xs font-semibold text-gray-400">{apt.phone}</p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2">
+                        <span className={`w-3 h-3 rounded-full ${apt.status === 'pending' ? 'bg-yellow-400' :
+                          apt.status === 'confirmed' ? 'bg-green-500' : 'bg-red-500'
+                          }`}></span>
+                        <span className="text-sm font-black text-[#011438]">{apt.time}</span>
+                      </div>
+                      <ChevronDownIcon className="w-5 h-5 text-gray-300 transition-transform group-hover:translate-y-0.5" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Revenue & Analytics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+                <h3 className="text-xl font-bold text-[#011438] mb-8">Revenue</h3>
+                <div className="space-y-8">
+                  <div>
+                    <p className="text-sm font-bold text-gray-400 mb-2">This Week</p>
+                    <p className="text-3xl font-black text-[#010101]">₹32540</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-400 mb-2">This Month</p>
+                    <p className="text-3xl font-black text-[#010101]">₹333240</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Revenue & Analytics */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
-                  <h3 className="text-base sm:text-lg font-bold text-dark mb-4">Revenue</h3>
-                  <div className="space-y-3 sm:space-y-4">
-                    <div>
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">This Week</p>
-                      <p className="text-xl sm:text-2xl font-bold text-dark">₹32540</p>
+              <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-[#011438]">Analytics</h3>
+                  <div className="flex items-center gap-1 cursor-pointer">
+                    <span className="text-sm font-bold text-gray-400">This week</span>
+                    <ChevronDownIcon className="w-4 h-4 text-gray-400" />
+                  </div>
+                </div>
+                <p className="text-[11px] font-bold text-gray-400 mb-6 uppercase tracking-wider">5% increased by last week</p>
+
+                {/* Bar Chart */}
+                <div className="flex items-end justify-between h-32 gap-3 mb-6 px-1">
+                  {[
+                    { h: '60%', d: 'S', color: 'bg-[#1E69FF]' },
+                    { h: '75%', d: 'S', color: 'bg-[#1E69FF]' },
+                    { h: '50%', d: 'M', color: 'bg-[#1E69FF]' },
+                    { h: '90%', d: 'T', color: 'bg-[#FFCC00]' },
+                    { h: '80%', d: 'W', color: 'bg-[#FFCC00]' },
+                    { h: '40%', d: 'T', color: 'bg-[#1E69FF]' },
+                    { h: '70%', d: 'F', color: 'bg-[#1E69FF]' },
+                  ].map((bar, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center gap-3">
+                      <div className={`w-full ${bar.color} rounded-lg transition-all hover:opacity-80`} style={{ height: bar.h }}></div>
+                      <span className="text-[11px] text-gray-400 font-bold uppercase">{bar.d}</span>
                     </div>
-                    <div>
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">This Month</p>
-                      <p className="text-xl sm:text-2xl font-bold text-dark">₹333240</p>
-                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 bg-[#1E69FF] rounded-full"></span>
+                    <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Appointment</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 bg-[#FFCC00] rounded-full"></span>
+                    <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Cancelled</span>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 sm:p-6 shadow-card">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-base sm:text-lg font-bold text-dark">Analytics</h3>
-                    <select className="text-xs sm:text-sm text-gray-500 border-none focus:outline-none">
-                      <option>This week</option>
-                    </select>
-                  </div>
-                  <p className="text-xs text-gray-400 mb-4">5% increased by last week</p>
-                  
-                  {/* Bar Chart */}
-                  <div className="flex items-end justify-between h-32 sm:h-40 gap-1 sm:gap-2 mb-4">
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '60%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">S</span>
+                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-50">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#1E69FF] rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/20">
+                      <UserGroupIcon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '70%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">S</span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '50%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">M</span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-yellow-400 rounded-t-lg transition-all" style={{height: '90%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">T</span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-yellow-400 rounded-t-lg transition-all" style={{height: '80%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">W</span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '40%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">T</span>
-                    </div>
-                    <div className="flex-1 flex flex-col items-center gap-2">
-                      <div className="w-full bg-blue-600 rounded-t-lg transition-all" style={{height: '75%'}}></div>
-                      <span className="text-xs text-gray-500 font-medium">F</span>
+                    <div>
+                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tight">Total Patient</p>
+                      <p className="text-xl font-black text-[#010101]">24</p>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-4 mt-4 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 bg-blue-600 rounded-full"></span>
-                      <span className="text-gray-600">Appointment</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#4ADE80] rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/20">
+                      <UserPlusIcon className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-                      <span className="text-gray-600">Cancelled</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 pt-4 border-t border-gray-100">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                        </svg>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs text-gray-500 truncate">Total Patient</p>
-                        <p className="text-base sm:text-lg font-bold text-gray-900">24</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
-                        </svg>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs text-gray-500 truncate">New Patient</p>
-                        <p className="text-base sm:text-lg font-bold text-gray-900">5</p>
-                      </div>
+                    <div>
+                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tight">New Patient</p>
+                      <p className="text-xl font-black text-[#010101]">5</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right Column - Doctor Profile & Alerts */}
-            <div className="space-y-6">
-              {/* Doctor Profile Card */}
-              <div className="bg-white rounded-xl p-6 shadow-card text-center">
-                <img
-                  src="/assets/doctor.png"
-                  alt="Dr. Nehar Khanna"
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                />
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <h3 className="text-xl font-bold text-dark">Dr. Nehar Khanna</h3>
-                  <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="text-sm text-gray-500 mb-6">Neurologists, Surgeon</p>
+          {/* Right Column - Profile & Alerts */}
+          <div className="w-full lg:w-[400px] space-y-8">
+            {/* Profile Card */}
+            <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)] relative">
+              <Link to="/edit-profile" className="absolute top-6 right-6">
+                <button className="px-4 py-1.5 bg-[#D4FF00] text-[#010101] text-[11px] font-bold rounded-lg hover:shadow-lg transition-all border border-lime-400">
+                  Profile Edit
+                </button>
+              </Link>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Overall Rating</p>
-                    <p className="text-2xl font-bold text-dark">4.8</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Total Patients</p>
-                    <p className="text-2xl font-bold text-dark">240</p>
+              <div className="flex flex-col items-center mb-8">
+                <div className="relative mb-6">
+                  <img
+                    src="/assets/doctor.png"
+                    alt="Dr. Nehar Khanna"
+                    className="w-28 h-28 rounded-full object-cover border-4 border-gray-50"
+                  />
+                  <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-md">
+                    <CheckBadgeIcon className="w-8 h-8 text-[#1E69FF]" />
                   </div>
                 </div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-2xl font-black text-[#010101]">Dr. Nehar Khanna</h3>
+                </div>
+                <p className="text-sm font-bold text-gray-400">Neurologists, Surgeon</p>
+              </div>
 
-                <div className="space-y-2 text-left">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Value for money -</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-yellow-400">⭐</span>
-                      <span className="font-semibold">4.5</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Doctor friendliness -</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-yellow-400">⭐</span>
-                      <span className="font-semibold">4.6</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Treatment satisfaction -</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-yellow-400">⭐</span>
-                      <span className="font-semibold">4.9</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600">Explanation of the health issue -</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-yellow-400">⭐</span>
-                      <span className="font-semibold">4.8</span>
-                    </div>
-                  </div>
+              <div className="grid grid-cols-2 gap-8 mb-8 pb-8 border-b border-gray-50">
+                <div className="text-center">
+                  <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1 text-left">Overall Rating</p>
+                  <p className="text-3xl font-black text-[#010101] text-left">4.8</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-1 text-left">Total Patients</p>
+                  <p className="text-3xl font-black text-[#010101] text-left">240</p>
                 </div>
               </div>
 
-              {/* Alerts */}
-              <div className="bg-white rounded-xl p-6 shadow-card">
-                <h3 className="text-lg font-bold text-dark mb-4">Alerts</h3>
-                <div className="space-y-3">
-                  {alerts.map((alert, idx) => (
-                    <div key={idx} className="flex gap-3">
-                      <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${alert.type === 'Cancellation' ? 'bg-red-500' : 'bg-green-500'}`}></div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-dark">{alert.type}</span>
-                          <span className="text-xs text-gray-400">{alert.time}</span>
-                        </div>
-                        <p className="text-sm text-gray-600">{alert.message}</p>
-                      </div>
+              <div className="space-y-4">
+                {[
+                  { label: 'Value for money', score: '4.5' },
+                  { label: 'Doctor friendliness', score: '4.6' },
+                  { label: 'Treatment satisfaction', score: '4.9' },
+                  { label: 'Explanation of health', score: '4.8' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between group">
+                    <span className="text-[13px] font-bold text-gray-500 group-hover:text-dark transition-colors">{item.label} -</span>
+                    <div className="flex items-center gap-1.5 bg-gray-50 px-2 py-0.5 rounded-lg border border-gray-100">
+                      <StarIcon className="w-3.5 h-3.5 text-[#FFCC00]" />
+                      <span className="text-sm font-black text-[#010101]">{item.score}</span>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Alerts Card */}
+            <div className="bg-white rounded-[32px] p-8 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.04)]">
+              <h3 className="text-xl font-bold text-[#011438] mb-8">Alerts</h3>
+              <div className="space-y-6">
+                {alerts.map((alert, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className={`w-3 h-3 rounded-full mt-1.5 flex-shrink-0 border-2 border-white shadow-sm ${alert.type === 'Cancellation' ? 'bg-[#FF4D4D]' : 'bg-[#4ADE80]'}`}></div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base font-bold text-[#011438]">{alert.type}</span>
+                        <span className="text-[10px] font-bold text-gray-400 tracking-tighter uppercase">{alert.time}</span>
+                      </div>
+                      <p className="text-[13px] font-medium text-gray-500 leading-relaxed">{alert.message}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
